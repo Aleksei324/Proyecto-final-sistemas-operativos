@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "control-vm" do |cvm|
+    # Esta será la maquina de control de Ansible
+    cvm.vm.hostname = "control-vm"
+    cvm.vm.network "private_network", ip: "192.168.56.2"
+
+    # Instala todo lo relacionado con Ansible para su uso
+    cvm.vm.provision "shell", path: "setup.sh", privileged: false
+  end
+
+  config.vm.define "host-vm" do |hvm|
+    # Esta será la maquina host de Ansible
+    hvm.vm.hostname = "host-vm"
+
+    # Para poder acceder a la página desde el exterior, se reenvian los puertos de http
+    hvm.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
+    hvm.vm.network "private_network", ip: "192.168.56.3"
+  end
+
+  config.vm.provider "virtualbox" do |vb|
+    # Requerimientos de Nginx:
+    #   4G ram / 2 cpus
+    # Requerimientos de Grafana:
+    #   512m ram / 1 cpu
+    # Requerimientos de Ansible:
+    #   4G ram / 2 cpus
+    vb.memory = 4096
+    vb.cpus = 2
+  end
+
+  # Ubuntu 22.04 LTS
+  config.vm.box = "ubuntu/jammy64"
+
+end
