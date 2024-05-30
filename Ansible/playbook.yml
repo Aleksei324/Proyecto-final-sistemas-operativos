@@ -1,0 +1,44 @@
+- name: Configuración de Nginx
+  hosts: grupoprincipal
+  become: true
+  tasks:
+  - name: Instala Nginx en su última versión
+    ansible.builtin.apt:
+      name: nginx
+      state: latest
+
+  - name: Arranca Nginx
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+      name: nginx.service
+      state: started
+      enabled: true
+
+
+- name: Configuración de Prometheus
+  hosts: grupoprincipal
+  become: true
+  tasks:
+  - name: Arranca Prometheus
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+      name: prometheus.service
+      state: started
+      enabled: true
+
+
+- name: Configuración de Grafana
+  hosts: grupoprincipal
+  become: true
+  tasks:
+  - name: Instala Grafana en su última versión
+    ansible.builtin.apt:
+      name: grafana
+      state: latest
+
+  - name: Arranca Grafana
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+      name: grafana-server.service
+      state: started
+      enabled: true
