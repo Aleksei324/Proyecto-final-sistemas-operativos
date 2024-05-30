@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     cvm.vm.network "private_network", ip: "192.168.56.2"
 
     # Instala todo lo relacionado con Ansible para su uso
-    cvm.vm.provision "shell", path: "setup.sh", privileged: false
+    cvm.vm.provision "shell", path: "setup-control.sh", privileged: false
   end
 
   config.vm.define "host-vm" do |hvm|
@@ -19,15 +19,18 @@ Vagrant.configure("2") do |config|
     # Para poder acceder a la página desde el exterior, se reenvian los puertos de http
     hvm.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
     hvm.vm.network "private_network", ip: "192.168.56.3"
+
+    # Permitir el usar otras llaves además de la provista por Vagrant
+    hvm.ssh.keys_only = false
+
+    # Configura ssh para su uso con Ansible
+    hvm.vm.provision "shell", path: "setup-host.sh"
   end
 
   config.vm.provider "virtualbox" do |vb|
-    # Requerimientos de Nginx:
-    #   4G ram / 2 cpus
-    # Requerimientos de Grafana:
-    #   512m ram / 1 cpu
-    # Requerimientos de Ansible:
-    #   4G ram / 2 cpus
+    # Requerimientos de Nginx: 4G ram / 2 cpus
+    #  Requerimientos de Grafana: 512m ram / 1 cpu
+    #   Requerimientos de Ansible: 4G ram / 2 cpus
     vb.memory = 4096
     vb.cpus = 2
   end
