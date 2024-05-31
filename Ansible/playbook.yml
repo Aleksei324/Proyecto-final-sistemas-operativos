@@ -29,6 +29,21 @@
   hosts: grupoprincipal
   become: true
   tasks:
+  - name: Descarga de Prometheus
+    ansible.builtin.unarchive:
+      remote_src: true # No utilizar un archivo de control-vm, sino de host-vm
+      src: https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz
+      dest: /opt/
+      # Al no poseer un script de instalación en el propio archivo descargado,
+      # se asume que es valido tener la instalación en el directorio /opt/, lo
+      # que permitiría tener una instalación más limpia. Se recalca que es
+      # igual de valido utilizar directorios como /usr/local/bin/.
+
+  - name: Copia del archivo de servicio
+    ansible.builtin.copy:
+      src: ../Prometheus/prometheus.service
+      dest: /etc/systemd/system/
+
   - name: Arranca Prometheus
     ansible.builtin.systemd_service:
       daemon_reload: true
