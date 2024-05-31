@@ -18,10 +18,7 @@ sudo cp ./.ssh/llave-ansible.pub /vagrant/
 # Versión alternativa:
 #ssh-copy-id -i ./.ssh/llave-ansible -o PasswordAuthentication=no vagrant@192.168.56.2
 
-echo "Descargando los archivos de Ansible"
-mkdir Ansible/
-cd Ansible/
-wget https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Ansible/hosts
-wget https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Ansible/playbook.yml
+echo "Descargando el repositorio con los archivos de Ansible"
+git clone https://github.com/Aleksei324/Proyecto-final-sistemas-operativos.git
 
 echo "Finalizando script..."
