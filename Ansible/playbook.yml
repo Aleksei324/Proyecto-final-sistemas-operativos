@@ -53,6 +53,7 @@
       dest: /usr/local/bin/
       owner: prometheus
       group: prometheus
+      mode: "774" # rwxrwxr--
 
   - name: Copia la configuración a su ubicación
     ansible.builtin.copy:
