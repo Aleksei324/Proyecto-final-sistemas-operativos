@@ -29,6 +29,11 @@
   hosts: grupoprincipal
   become: true
   tasks:
+  - name: Instala Unzip en su última versión
+    ansible.builtin.apt:
+      name: unzip
+      state: latest
+
   - name: Descarga de Prometheus
     ansible.builtin.unarchive:
       remote_src: true # No utilizar un archivo de control-vm, sino de host-vm
