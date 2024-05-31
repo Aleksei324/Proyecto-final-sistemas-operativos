@@ -73,6 +73,17 @@
   hosts: grupoprincipal
   become: true
   tasks:
+  - name: Añade el repositorio de Grafana
+    ansible.builtin.deb822_repository:
+      name: grafana
+      types: deb
+      uris: https://apt.grafana.com
+      signed_by: https://apt.grafana.com/gpg.key
+      suites: stable
+      components: main
+      state: present
+      enabled: true
+
   - name: Instala Grafana en su última versión
     ansible.builtin.apt:
       name: grafana
