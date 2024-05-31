@@ -49,6 +49,13 @@
       # que permitiría tener una instalación más limpia. Se recalca que es
       # igual de valido utilizar directorios como /usr/local/bin/.
 
+  - name: Creación del directorio de datos
+    ansible.builtin.file:
+      path: /prometheus-data/
+      state: directory
+      owner: prometheus
+      group: prometheus
+
   - name: Copia del archivo de servicio
     ansible.builtin.copy:
       src: ../Prometheus/prometheus.service
