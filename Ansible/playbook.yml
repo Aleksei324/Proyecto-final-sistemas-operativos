@@ -7,11 +7,21 @@
       name: nginx
       state: latest
 
-  - name: Arranca Nginx
+  - name: Copia los archivos html
+    ansible.builtin.copy:
+      src: ../Nginx/html-Ansible # importante que no termine en /
+      dest: /var/www/
+
+  - name: Copia los archivos de configuración
+    ansible.builtin.copy:
+      src: ../Nginx/Configuración-Ansible.conf
+      dest: /etc/nginx/conf.d/
+
+  - name: Reinicia Nginx
     ansible.builtin.systemd_service:
       daemon_reload: true
       name: nginx.service
-      state: started
+      state: restarted
       enabled: true
 
 
