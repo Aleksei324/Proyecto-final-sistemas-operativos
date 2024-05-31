@@ -4,6 +4,7 @@
   tasks:
   - name: Instala Nginx en su última versión
     ansible.builtin.apt:
+      update_cache: true
       name: nginx
       state: latest
 
@@ -86,6 +87,7 @@
 
   - name: Instala Grafana en su última versión
     ansible.builtin.apt:
+      update_cache: true
       name: grafana
       state: latest
 
