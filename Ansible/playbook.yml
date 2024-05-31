@@ -42,17 +42,45 @@
     ansible.builtin.unarchive:
       remote_src: true # No utilizar un archivo de control-vm, sino de host-vm
       src: https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz
-      dest: /opt/
+      dest: /home/vagrant/
       owner: prometheus
       group: prometheus
-      # Al no poseer un script de instalación en el propio archivo descargado,
-      # se asume que es valido tener la instalación en el directorio /opt/, lo
-      # que permitiría tener una instalación más limpia. Se recalca que es
-      # igual de valido utilizar directorios como /usr/local/bin/.
 
-  - name: Creación del directorio de datos
+  - name: Copia el binario a su ubicación
+    ansible.builtin.copy:
+      remote_src: true
+      src: /home/vagrant/prometheus-2.52.0.linux-amd64/prometheus
+      dest: /usr/local/bin/
+      owner: prometheus
+      group: prometheus
+
+  - name: Copia la configuración a su ubicación
+    ansible.builtin.copy:
+      remote_src: true
+      src: /home/vagrant/prometheus-2.52.0.linux-amd64/prometheus.yml
+      dest: /etc/prometheus/
+      owner: prometheus
+      group: prometheus
+
+  - name: Copia las plantillas a su ubicación
+    ansible.builtin.copy:
+      remote_src: true
+      src: /home/vagrant/prometheus-2.52.0.linux-amd64/consoles
+      dest: /etc/prometheus/
+      owner: prometheus
+      group: prometheus
+
+  - name: Copia las librerias a su ubicación
+    ansible.builtin.copy:
+      remote_src: true
+      src: /home/vagrant/prometheus-2.52.0.linux-amd64/console_libraries
+      dest: /etc/prometheus/
+      owner: prometheus
+      group: prometheus
+
+  - name: Creación del directorio de almacenamiento
     ansible.builtin.file:
-      path: /prometheus-data/
+      path: /var/local/prometheus/
       state: directory
       owner: prometheus
       group: prometheus
