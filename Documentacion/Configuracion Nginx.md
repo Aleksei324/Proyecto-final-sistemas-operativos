@@ -7,8 +7,8 @@ dominio y otro subdominio.
 ### Prerequisitos
 
 - Un servidor con Ubuntu 20.x o superior.
-- Un nombre de dominio registrado, este puede arquirirse a bajo precio en NameCheap.
-- El dominio configurado para que apunte al servidor, tal que:
+- Un nombre de dominio registrado, este puede arquirirse a bajo precio en NameCheap. (Opcional)
+- El dominio configurado para que apunte al servidor, tal que: (Opcional)
 -- Record A con ejemplo.com apuntando a IP publica de server
 -- Record A con www.ejemplo.com apuntando a IP publica de server
 
@@ -81,7 +81,7 @@ si no hay problemas, reiniciamos el servicio de Nginx para aplicar cambios
 
 Una vez reiniciado el servicio, podremos acceder al Server Block creado, navegando a http://dominio_ejemplo
 
-### Asegurando Nginx con Let's encrypt
+### Asegurando Nginx con Let's encrypt (Requiere dominio adquirido con DNS configurado apuntando al servidor)
 
 Let's Encrypt es una autoridad de certificacion (CA), el cual nos permite generar de manera facil y gratuita,
 certificados TLS/SSL para nuestros dominios. Parte del proceso lo automatiza con el cliente, Certbot.

@@ -8,7 +8,6 @@ Proyecto final sistemas operativos.
 - Norman Pabon 
 - Camilo Franco
 - Cristian David  
-- Marco Aurelio Antonio
 
 
 ## Descripción del Proyecto
@@ -50,7 +49,7 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 
 ## Documentación
 
-### Listado de documentacion 
+En los siguientes links podra encontrar la documentacion para desplegar el sistema de manera manual.
 
 - [Configuracion de NGINX](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Nginx.md)
 - [Configuracion de Grafana](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md)
