@@ -53,5 +53,5 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 ### Listado de documentacion 
 
 - [Configuracion de NGINX](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Nginx.md)
-- link a md de Grafana
-- link a md de Ansible
+- [Configuracion de Grafana](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md)
+- [Configuracion de Ansible](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md)
