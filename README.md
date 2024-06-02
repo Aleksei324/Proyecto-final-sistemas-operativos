@@ -32,7 +32,7 @@ en la carpeta que desea tener la configuracion de la maquina a crar.
 
 Una vez tenga el archivo, ejecute el siguiente comando "vagrant up" desde la consola para que Vagrant cree y despliegue la maquina virtual.
 
-imagenVagrantUp
+![imagenVagrantUp](https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Documentacion/media/capturaVagrantup.png)
 
 
 ## Configuración del entorno
