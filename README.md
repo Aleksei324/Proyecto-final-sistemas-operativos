@@ -1,6 +1,7 @@
 # Proyecto final: Sistemas Operativos
 
-Este es un proyecto universitario para la materia de sistemas operativos, creado por Norman Pabon, Cristian David Chacon y Camilo Franco Moya. Utiliza las tecnologías Vagrant, Ansible, Nginx, Prometheus y Grafana.
+Proyecto final sistemas operativos.
+
 
 ## Integrantes proyecto final
 
@@ -16,8 +17,9 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 
 ## Requisitos maquina host
 
-- Vagrant
-- VirtualBox
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Ansible](https://www.ansible.com/)
 
 ## Configuración del entorno
 
@@ -50,5 +52,6 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 
 ### Listado de documentacion 
 
-- Link a md de nginx
-- link a md de grafana
+- [Configuracion de NGINX](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Nginx.md)
+- link a md de Grafana
+- link a md de Ansible
