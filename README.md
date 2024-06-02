@@ -1,6 +1,12 @@
 # Proyecto final: Sistemas Operativos
 
-Proyecto final sistemas operativos.
+Este proyecto despliega los siguientes servicios de red:
+
+- NGINX : Para servir paginas web en la maquina virtual.
+- Prometheus : Para tomar metricas del rendimiento del sistema, el servicio de Nginx y la posibilidad
+de otras maquinas.
+- Grafana : Nos permite visualizar las metricas de Prometheus en dashboards, facilitando la interpretacion
+de los datos tomados y permitiendo un analisis mas rapido de los mismos.
 
 
 ## Integrantes proyecto final
@@ -8,7 +14,6 @@ Proyecto final sistemas operativos.
 - Norman Pabon 
 - Camilo Franco
 - Cristian David  
-
 
 ## Descripción del Proyecto
 
@@ -19,6 +24,16 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 - [Vagrant](https://www.vagrantup.com/)
 - [VirtualBox](https://www.virtualbox.org/)
 - [Ansible](https://www.ansible.com/)
+
+## Provisionamiento de la VM con Vagrant y VirtualBox
+
+Para desplegar la maquina virtual, ubique el archivo Vagrantfile en la carpeta "Archivos configuracion" del repositorio, ubique el archivo
+en la carpeta que desea tener la configuracion de la maquina a crar. 
+
+Una vez tenga el archivo, ejecute el siguiente comando "vagrant up" desde la consola para que Vagrant cree y despliegue la maquina virtual.
+
+imagenVagrantUp
+
 
 ## Configuración del entorno
 
@@ -48,8 +63,6 @@ El objetivo de este proyecto es crear una máquina virtual con Linux, provisiona
 3. Verifica que Prometheus esté recopilando métricas del desempeño de la máquina virtual. Configure Grafana para producir un reporte de las métricas recolectadas por Prometheus.
 
 ## Documentación
-
-En los siguientes links podra encontrar la documentacion para desplegar el sistema de manera manual.
 
 - [Configuracion de NGINX](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Nginx.md)
 - [Configuracion de Grafana](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md)
