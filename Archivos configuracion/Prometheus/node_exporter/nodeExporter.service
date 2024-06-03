@@ -4,10 +4,10 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=ubuntu
-Group=sudo
+User=prometheus
+Group=prometheus
 Type=simple
-ExecStart=/home/ubuntu/node_exporter-1.8.1.linux-amd64/node_exporter
+ExecStart=/usr/local/bin/node_exporter
 
 [Install]
 WantedBy=multi-user.target
