@@ -33,11 +33,14 @@ Para desplegar la maquina virtual, ubique el archivo [Vagrantfile](https://githu
 
 **Importante, los scripts "setup-control.sh" y "setup-host.sh" deben encontrarse en la misma carpeta donde situe el Vagrantfile !**
 
-Una vez tenga el archivo, ejecute el siguiente comando "vagrant up" desde la consola para que Vagrant cree y despliegue la maquina virtual.
+Una vez tenga el archivo, ejecute el siguiente comando **vagrant up** desde la consola para que Vagrant cree y despliegue la maquina virtual.
+```bash
+vagrant up
+```
 
 ![imagenVagrantUp](https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Documentacion/media/capturaVagrantup.png)
 
-Ahora, si no nos ingreso automaticamente a la maquina "control-vm" debemos acceder por ssh a ella, para esto nos dirigimos a la consola y ubicamos el id de la maquina creada usando el comando "vagrant global-status", una vez tengamos el id, procedemos a conectarnos con el comando "vagrant ssh idMaquina"
+Ahora, si no nos ingreso automaticamente a la maquina "control-vm" debemos acceder por ssh a ella, para esto nos dirigimos a la consola y ubicamos el id de la maquina creada usando el comando **vagrant global-status**, una vez tengamos el id, procedemos a conectarnos con el comando **vagrant ssh idMaquina**
 
 ```bash
 vagrant global-status
@@ -53,10 +56,12 @@ Las maquinas creadas, deben quedar con las siguientes direcciones IPV4 asignadas
 
 ### Provisionando las maquinas creadas en el paso anterior con Ansible
 
-Para ejecutar el playbook de ansible, el cual nos permitira instalar el software y aplicar las configuraciones necesarias. Debemos ubicarnos en la carpeta /home de la maquina creada en el paso anterior con el nombre "Vagrant"control_vm". Luego, desde la terminal ingresamos a la ruta "/home/vagrant/Proyecto-final-sistemas-operativos/Archivos configuracion/Ansible" y ejecutamos el comando "ansible-playbook -i hosts playbook.yml"
+Para ejecutar el playbook de ansible, el cual nos permitira instalar el software y aplicar las configuraciones necesarias. Debemos ubicarnos en la carpeta /home de la maquina creada en el paso anterior con el nombre **Vagrantcontrol_vm**. 
 
 ```bash
+# Nos ubicamos en la carpeta con playbook de Ansible
 cd "/home/vagrant/Proyecto-final-sistemas-operativos/Archivos configuracion/Ansible"
+# Servimos a la maquina Host, con la configuracion de Ansible
 ansible-playbook -i hosts playbook.yml
 ```
 Se iniciara el proceso de provisionamiento desde dicha consola, donde nos ira comentando que tareas se encuentra ejecutando, debemos esperar hasta que termine dicho proceso. Al final nos dira si todas las tareas se corrieron sin error, de ser ese el caso ya tendriamos provisionados nuestros sistemas.
@@ -79,13 +84,18 @@ Una vez se hayan provisionado las maquinas, podremos acceder a los servicios hos
 
 ![Landing grafana](https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Documentacion/media/grafana_landing.png)
 
+El dashboard utilizado para el modulo de Prometheus node_exporter, se encuentra en esta url [dashboard](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/tree/main/Archivos%20configuracion/Grafana%20dashboard)
+
+Dicho documento debe importarse desde el menu de "dashboard" en grafana para obtener una vista de control del modulo instalado.
+![imagen dashboard](https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Documentacion/media/dashboard_grafana.png)
+
 ## Documentación de configuracion manual
 
 Los siguientes hipervinculos llevan a la documentacion de este proyecto, donde se explica como realizar la configuracion manual de cada uno de los servicios usados. Los links de configuracion se encuentran en el orden que deben ser configurados.
 
 - [Configuracion de Prometheus](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Prometheus.md) : Para la toma de metricas de los sistemas a monitorear.
 - [Configuracion de node_exporter](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20node_exporter.md) : Modulo de Prometheus para tomar metricas mas detalladas del estado del sistema.
-- [Configuracion de Grafana](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md) : Herramienta para la visualizacion grafica de las metricas de Prometheus y/o otras fuentes de datos (Datasources).
+- [Configuracion de Grafana](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Grafana.md) : Herramienta para la visualizacion grafica de las metricas de Prometheus y/o otras fuentes de datos (Datasources).
 - [Configuracion de NGINX](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Nginx.md) : Servicio para servir paginas web, realizar balanceo de carga o crear pipelines de red.
 - [Configuracion de Ansible](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md) : Herramienta de software que nos permite la automatizacion y despliegue de los servicios antes configurados, mediante la creacion de un playbook.
 
