@@ -26,7 +26,7 @@
       enabled: true
 
 
-- name: Configuración de Prometheus
+- name: Configuración de Node Exporter
   hosts: grupoprincipal
   become: true
   tasks:
@@ -66,6 +66,11 @@
       state: started
       enabled: true
 
+
+- name: Configuración de Prometheus
+  hosts: grupoprincipal
+  become: true
+  tasks:
   - name: Descarga de Prometheus
     ansible.builtin.unarchive:
       remote_src: true # No utilizar un archivo de control-vm, sino de host-vm
@@ -147,9 +152,16 @@
       name: grafana
       state: latest
 
+  - name: Copia los dashboards a su ubicación
+    ansible.builtin.copy:
+      src: ../Grafana/dashboard_nodeExporter.json
+      dest: /var/lib/grafana/dashboards/
+      #owner: grafana
+      #group: grafana
+
   - name: Arranca Grafana
     ansible.builtin.systemd_service:
       daemon_reload: true
       name: grafana-server.service
-      state: started
+      state: restarted
       enabled: true
