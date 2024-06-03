@@ -38,6 +38,34 @@
       shell: /sbin/nologin
       state: present
 
+  - name: Descompresión de Node Exporter
+    ansible.builtin.unarchive:
+      src: ../Prometheus/node_exporter/node_exporter-1.8.1.linux-amd64.tar.gz
+      dest: /home/vagrant/
+      owner: prometheus
+      group: prometheus
+
+  - name: Copia el binario a su ubicación
+    ansible.builtin.copy:
+      remote_src: true
+      src: /home/vagrant/node_exporter-1.8.1.linux-amd64/node_exporter
+      dest: /usr/local/bin/
+      owner: prometheus
+      group: prometheus
+      mode: "774" # rwxrwxr--
+
+  - name: Copia del archivo de servicio de Node Exporter
+    ansible.builtin.copy:
+      src: ../Prometheus/node_exporter/nodeExporter.service
+      dest: /etc/systemd/system/
+
+  - name: Arranca Node Exporter
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+      name: nodeExporter.service
+      state: started
+      enabled: true
+
   - name: Descarga de Prometheus
     ansible.builtin.unarchive:
       remote_src: true # No utilizar un archivo de control-vm, sino de host-vm
@@ -57,8 +85,7 @@
 
   - name: Copia la configuración a su ubicación
     ansible.builtin.copy:
-      remote_src: true
-      src: /home/vagrant/prometheus-2.52.0.linux-amd64/prometheus.yml
+      src: ../Prometheus/prometheus.yml
       dest: /etc/prometheus/
       owner: prometheus
       group: prometheus
@@ -86,7 +113,7 @@
       owner: prometheus
       group: prometheus
 
-  - name: Copia del archivo de servicio
+  - name: Copia del archivo de servicio de Prometheus
     ansible.builtin.copy:
       src: ../Prometheus/prometheus.service
       dest: /etc/systemd/system/
