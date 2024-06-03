@@ -152,12 +152,20 @@
       name: grafana
       state: latest
 
+  - name: Copia la configuración a su ubicación
+    ansible.builtin.copy:
+      src: ../Grafana/grafana.ini
+      dest: /etc/grafana/grafana.ini
+      owner: grafana
+      group: grafana
+      force: true
+
   - name: Copia los dashboards a su ubicación
     ansible.builtin.copy:
       src: ../Grafana/dashboard_nodeExporter.json
       dest: /var/lib/grafana/dashboards/
-      #owner: grafana
-      #group: grafana
+      owner: grafana
+      group: grafana
 
   - name: Arranca Grafana
     ansible.builtin.systemd_service:
