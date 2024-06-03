@@ -152,10 +152,18 @@
       name: grafana
       state: latest
 
-  - name: Copia la configuración a su ubicación
+  - name: Copia la configuración de Grafana a su ubicación
     ansible.builtin.copy:
       src: ../Grafana/grafana.ini
       dest: /etc/grafana/grafana.ini
+      owner: grafana
+      group: grafana
+      force: true
+
+  - name: Copia la configuración del provisioning a su ubicación
+    ansible.builtin.copy:
+      src: ../Grafana/sample.yaml
+      dest: /etc/grafana/provisioning/dashboards/sample.yaml
       owner: grafana
       group: grafana
       force: true
