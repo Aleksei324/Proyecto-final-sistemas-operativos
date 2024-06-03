@@ -66,6 +66,8 @@ sudo systemctl status grafana-server
 
 
 
+
+
 ### Paso 7: Acceder a Grafana
 
 Grafana debería estar corriendo en el puerto 3000. Puedes acceder a la interfaz web de Grafana abriendo un navegador y navegando a http://<tu-dirección-ip>:3000.
@@ -104,3 +106,10 @@ Añadir Prometheus como Fuente de Datos
     Agregar un Nuevo Canal de Notificación:
         Haz clic en "Add channel".
         Configura el canal según tus necesidades (por ejemplo, correo electrónico, Slack, etc.).
+
+### Archivos de configuracion
+
+El dashboard utilizado para el modulo de Prometheus node_exporter, se encuentra en esta url [dashboard](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/tree/main/Archivos%20configuracion/Grafana%20dashboard)
+
+Dicho documento debe importarse desde el menu de "dashboard" en grafana para obtener una vista de control del modulo instalado.
+![imagen dashboard](https://raw.githubusercontent.com/Aleksei324/Proyecto-final-sistemas-operativos/main/Documentacion/media/dashboard_grafana.png)

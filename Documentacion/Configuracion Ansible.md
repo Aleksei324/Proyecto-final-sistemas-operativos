@@ -29,5 +29,6 @@ Se basa en el uso de playbooks, que son archivos YAML que describen las tareas a
          - Reiniciar servidor web
 ```
 
- TODO : Terminar documentacion
+El playbook usado para el despliegue de los servicios de este proyecto se encuentra en la carpeta "Archivos configuracion/Ansible"
+- [Archivos configuracion Ansible](https://github.com/Aleksei324/Proyecto-final-sistemas-operativos/blob/main/Documentacion/Configuracion%20Ansible.md)
 

@@ -1,10 +1,14 @@
 # Configuracion de la maquina a monitorear con node_exporter
 
 ## Instalacion de node exporter
-Descargamos el binario de node exporter, desde la url:
+
+En este repositorio, en el directorio  "Archivos configuracion", dentro de la carpeta "Prometheus" se encuentran los archivos para instalar
+el servicio de node_exporter asi como el ejecutable del modulo node_exporter usado para este proyecto.
+
+Si se desea la usar la version mas reciente, descargamos el binario de node exporter, desde la url:
 "https://prometheus.io/download/#node_exporter"
 
-Una vez descargado, descomprimimos el archivo con el comando 
+Una vez descargado, situandonos en la carpeta donde se encuentra el .tar, descomprimimos el archivo con el comando 
 
 ```
 tar xvfz node_exporter-...-.tar.gz

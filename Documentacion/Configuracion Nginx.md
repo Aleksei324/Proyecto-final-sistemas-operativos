@@ -1,5 +1,7 @@
 # Guia de configuracion NGINX
 
+Esta guia explica como montar el servicio de NGINX de manera manual.
+
 Para poder llevar a cabo el encapsulamiento del trafico, debemos configurar el servicio de nginx para
 recibir peticiones SSL por el puerto 443, asi mismo, debemos contar con un certificado valido y un
 dominio y otro subdominio.
